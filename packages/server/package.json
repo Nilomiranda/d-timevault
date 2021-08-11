@@ -6,10 +6,9 @@
   "license": "MIT",
   "scripts": {
     "lint": "yarn eslint . --ext .js,.jsx,.ts,.tsx",
-    "dev": "node dist/index.js",
+    "start": "node dist/index.js",
     "postinstall": "tsc --build",
-    "watch": "rm -rf dist && tsc-watch --onSuccess 'yarn dev'",
-    "start": "node dist/index.js"
+    "dev": "rm -rf dist && tsc-watch --onSuccess 'yarn start'"
   },
   "dependencies": {
     "@koa/router": "^10.0.0",

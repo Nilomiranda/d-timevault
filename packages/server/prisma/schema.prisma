@@ -17,6 +17,7 @@ model TimeCapsule {
     name String?
     content String
     emailConfirmationCode String?
-    emailConfirmed Bool @default(false)
-    emailSent Bool @default(false)
+    emailConfirmed Boolean @default(false)
+    emailSent Boolean @default(false)
+    scheduledTo DateTime
 }

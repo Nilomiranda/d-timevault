@@ -28,9 +28,6 @@ export const updateTimeCapsule = async (context: KoaContext) => {
       }
     }
 
-    console.log('timeCapsule', timeCapsule?.id, timeCapsule?.uuid)
-
-
     const confirmedTimeCapsule = await context.prisma.timeCapsule.update({
       where: {
         id: timeCapsule?.id
@@ -40,8 +37,6 @@ export const updateTimeCapsule = async (context: KoaContext) => {
         emailConfirmed: true,
       }
     })
-
-    console.log('confirmedTimeCapsule', confirmedTimeCapsule)
 
     context.response.status = 200
     return context.response.body = {

@@ -1,5 +1,6 @@
 import Koa from 'koa'
 import dotenv from 'dotenv'
+import cors from '@koa/cors'
 import router from './routes'
 import bodyParser from 'koa-bodyparser'
 import { PrismaClient } from '@prisma/client'
@@ -20,6 +21,10 @@ prisma?.$connect().then(() => {
 })
 
 app.context.prisma = prisma
+
+app.use(cors({
+  allowMethods: ['OPTIONS', 'GET', 'HEAD', 'POST', 'DELETE', 'PATCH'],
+}))
 
 app.use(bodyParser())
 app.use(router.routes())

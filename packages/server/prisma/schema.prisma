@@ -20,4 +20,5 @@ model TimeCapsule {
     emailConfirmed Boolean @default(false)
     emailSent Boolean @default(false)
     scheduledTo DateTime
+    uuid String @unique
 }

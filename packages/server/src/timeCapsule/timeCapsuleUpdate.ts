@@ -7,7 +7,7 @@ const validationSchema = yup.object().shape({
   guid: yup.string().required('GUID is required'),
 })
 
-export const deleteTimeCapsule = async (context: KoaContext) => {
+export const updateTimeCapsule = async (context: KoaContext) => {
   const { request: { body } } = context
   const { email, code, guid } = body
 
@@ -28,9 +28,25 @@ export const deleteTimeCapsule = async (context: KoaContext) => {
       }
     }
 
-    await context.prisma.timeCapsule.delete({ where: { id: timeCapsule?.id } })
+    console.log('timeCapsule', timeCapsule?.id, timeCapsule?.uuid)
 
-    return context.response.status = 201
+
+    const confirmedTimeCapsule = await context.prisma.timeCapsule.update({
+      where: {
+        id: timeCapsule?.id
+      },
+      data: {
+        emailConfirmationCode: '',
+        emailConfirmed: true,
+      }
+    })
+
+    console.log('confirmedTimeCapsule', confirmedTimeCapsule)
+
+    context.response.status = 200
+    return context.response.body = {
+      timeCapsule: confirmedTimeCapsule
+    }
   } catch (err) {
     context.response.status = 400
     return context.response.body = {

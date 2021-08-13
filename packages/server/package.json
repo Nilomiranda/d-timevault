@@ -8,7 +8,8 @@
     "lint": "yarn eslint . --ext .js,.jsx,.ts,.tsx",
     "start": "node dist/index.js",
     "postinstall": "tsc --build",
-    "dev": "rm -rf dist && tsc-watch --onSuccess 'yarn start'"
+    "dev": "rm -rf dist && tsc-watch --onSuccess 'yarn start'",
+    "update:schema": "prisma generate"
   },
   "dependencies": {
     "@koa/router": "^10.0.0",

@@ -38,6 +38,7 @@ export const createTimeCapsule = async (context: KoaContext) => {
         content,
         emailConfirmationCode: chance.string({ pool: 'ABCDEFGHIJKLMNOPQRSTUVXWYZ1234567890', length: 6 }),
         scheduledTo: new Date(scheduledTo),
+        uuid: chance.guid({ version: 5 })
       }
     })
 
@@ -46,6 +47,7 @@ export const createTimeCapsule = async (context: KoaContext) => {
         name: timeCapsule?.name,
         email: timeCapsule?.email,
         confirmationCode: timeCapsule?.emailConfirmationCode,
+        guid: timeCapsule?.uuid,
         confirmationCallbackUrl,
         deletionCallbackUrl
       })
@@ -62,11 +64,11 @@ export const createTimeCapsule = async (context: KoaContext) => {
   }
 }
 
-const sendConfirmationEmail = ({name, email, confirmationCode, confirmationCallbackUrl, deletionCallbackUrl}) => {
+const sendConfirmationEmail = ({name, email, confirmationCode, guid, confirmationCallbackUrl, deletionCallbackUrl}) => {
   const variables = {
     email,
-    confirmationLink: `${confirmationCallbackUrl}?email=${email}&code=${confirmationCode}`,
-    deletionLink: `${deletionCallbackUrl}?email=${email}&code=${confirmationCode}`
+    confirmationLink: `${confirmationCallbackUrl}?email=${email}&code=${confirmationCode}&guid=${guid}`,
+    deletionLink: `${deletionCallbackUrl}?email=${email}&code=${confirmationCode}&guid=${guid}`
   }
 
   sendEmailWithTemplate(EMAIL_CONFIRMATION_TEMPLATE_ID, [{ Email: email, Name: name || '' }], '', variables).catch(err => {

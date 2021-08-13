@@ -4,11 +4,12 @@ import * as yup from "yup";
 const validationSchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
   code: yup.string().required('Code is required'),
+  guid: yup.string().required('GUID is required'),
 })
 
 export const deleteTimeCapsule = async (context: KoaContext) => {
   const { request: { body } } = context
-  const { email, code } = body
+  const { email, code, guid } = body
 
   try {
     await validationSchema.validate({ email, code })
@@ -16,7 +17,7 @@ export const deleteTimeCapsule = async (context: KoaContext) => {
     const timeCapsule = await context.prisma.timeCapsule.findFirst({
       rejectOnNotFound: false,
       where: {
-        AND: { email, emailConfirmationCode: code }
+        AND: { email, emailConfirmationCode: code, uuid: guid }
       }
     })
 

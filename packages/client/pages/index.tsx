@@ -106,7 +106,7 @@ const Index = () => {
           <Text color="white" fontSize="md" mb="1rem">
             Your memo
           </Text>
-          <ReactQuill theme="snow" value={content} onChange={setContent} style={{ color: 'white' }} />
+          <ReactQuill className="text-editor" theme="snow" value={content} onChange={setContent} style={{ color: 'white' }} />
         </Box>
 
         <Box display="flex" flexDirection="column" alignItems="flex-start">
@@ -122,7 +122,7 @@ const Index = () => {
           </Text>
         </Fade>
 
-        <Button isLoading={submitting} loadingText="Creating time capsule" type="submit" maxWidth="300px" alignSelf="center" px="2rem" mt="1.5rem" colorScheme="blue">
+        <Button isLoading={submitting} loadingText="Creating time capsule" type="submit" w="100%" maxWidth="300px" alignSelf="center" px="2rem" mt="1.5rem" colorScheme="blue">
           Submit
         </Button>
       </Box>

@@ -1,4 +1,4 @@
-import { Box, Button, Fade, Input, Text, useToast } from '@chakra-ui/react'
+import { Box, Button, Fade, Heading, Input, Text, useToast } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import Calendar from 'react-calendar'
 import { addHours } from 'date-fns'
@@ -54,8 +54,17 @@ const Index = () => {
   }, [submitted])
 
   return (
-    <Box w="100%" h="100vh" background="gray.800" display="flex" alignItems="center" justifyContent="center">
-      <Box as="form" w="100%" maxWidth="1024px" display="flex" flexDirection="column" alignItems="stretch" onSubmit={handleSubmit}>
+    <Box w="100%" background="gray.800" py="1.5rem" display="flex" flexDirection="column" alignItems="center" justifyContent="flex-start">
+      <Box as="form" w="100%" h="100%" maxWidth="1024px" px="2rem" display="flex" flexDirection="column" alignItems="stretch" onSubmit={handleSubmit}>
+        <Box mb="3rem">
+          <Heading fontSize="6xl" color="white" w="100%" textAlign="center">
+            TimeVault
+          </Heading>
+          <Heading fontSize="lg" color="gray.500" w="100%" textAlign="center">
+            Don't let your memories fade with time... Write a memo and let us send it back to you when the time comes
+          </Heading>
+        </Box>
+
         <Box display="flex" flexDirection="column" alignItems="flex-start">
           <Text color="white" fontSize="md" mb="1rem">
             Name

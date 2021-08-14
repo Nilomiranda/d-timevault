@@ -61,8 +61,8 @@ const Index = () => {
             Name
           </Text>
           <Input
+            maxWidth="500px"
             background="transparent"
-            maxWidth="300px"
             color="white"
             placeholder="Your name (optional)"
             borderWidth="1px"
@@ -79,8 +79,8 @@ const Index = () => {
             Email
           </Text>
           <Input
+            maxWidth="500px"
             background="transparent"
-            maxWidth="300px"
             color="white"
             placeholder="Your email (required)"
             borderWidth="1px"
@@ -93,7 +93,7 @@ const Index = () => {
           />
         </Box>
 
-        <Box maxWidth="720px" my="2.5rem">
+        <Box my="2.5rem">
           <Text color="white" fontSize="md" mb="1rem">
             Your memo
           </Text>

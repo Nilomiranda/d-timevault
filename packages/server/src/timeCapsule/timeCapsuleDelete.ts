@@ -8,8 +8,8 @@ const validationSchema = yup.object().shape({
 })
 
 export const deleteTimeCapsule = async (context: KoaContext) => {
-  const { request: { body } } = context
-  const { email, code, guid } = body
+  const { request: { query } } = context
+  const { email, code, guid } = query;
 
   try {
     await validationSchema.validate({ email, code, guid })
@@ -17,7 +17,7 @@ export const deleteTimeCapsule = async (context: KoaContext) => {
     const timeCapsule = await context.prisma.timeCapsule.findFirst({
       rejectOnNotFound: false,
       where: {
-        AND: { email, emailConfirmationCode: code, uuid: guid }
+        AND: { email: <string>email, emailConfirmationCode: <string>code, uuid: <string>guid }
       }
     })
 

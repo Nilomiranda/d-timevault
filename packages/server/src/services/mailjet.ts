@@ -18,7 +18,7 @@ export const sendEmailWithTemplate = async (templateId: number, to: {Email: stri
         TemplateID: templateId,
         TemplateLanguage: true,
         Subject: "Time capsule confirmation",
-        Variables: variables
+        Variables: variables,
       }
     ]
   })

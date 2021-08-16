@@ -123,7 +123,7 @@ const Index = () => {
         </Fade>
 
         <Button isLoading={submitting} loadingText="Creating time capsule" type="submit" w="100%" maxWidth="300px" alignSelf="center" px="2rem" mt="1.5rem" colorScheme="blue">
-          Submit
+          Create time capsule
         </Button>
       </Box>
     </Box>

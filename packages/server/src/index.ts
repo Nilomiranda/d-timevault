@@ -4,6 +4,8 @@ import cors from '@koa/cors'
 import router from './routes'
 import bodyParser from 'koa-bodyparser'
 import { PrismaClient } from '@prisma/client'
+import Bree from 'bree'
+import path from 'path'
 
 const prisma = new PrismaClient()
 const app = new Koa()
@@ -28,3 +30,16 @@ app.use(cors({
 
 app.use(bodyParser())
 app.use(router.routes())
+
+const bree = new Bree({
+  root: false,
+  jobs: [
+    {
+      name: 'sendTimeCapsuleEmail',
+      interval: 'Every 1 second',
+      path: path.join(__dirname, '../jobs', 'sendTimeCapsuleEmail.js')
+    }
+  ]
+})
+
+bree.start()

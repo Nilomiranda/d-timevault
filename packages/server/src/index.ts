@@ -36,12 +36,12 @@ const bree = new Bree({
   jobs: [
     {
       name: 'sendTimeCapsuleEmail',
-      interval: 'Every 5 seconds',
+      interval: 'Every 1 day',
       path: path.join(__dirname, '../jobs', 'sendTimeCapsuleEmail.js')
     },
     {
       name: 'deleteTimeCapsules',
-      interval: 'Every 5 seconds',
+      interval: 'Every 1 day',
       path: path.join(__dirname, '../jobs', 'deleteTimeCapsules.js')
     }
   ]

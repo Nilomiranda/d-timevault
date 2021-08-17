@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev -p 4000",
     "build": "next build",
-    "start": "next start",
-    "prepare": "husky install"
+    "start": "next start"
   },
   "dependencies": {
     "@chakra-ui/icons": "^1.0.13",

@@ -1,7 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import {sendEmailWithTemplate} from "../src/services/mailjet";
 import { parentPort } from "worker_threads";
-import {isToday, parseISO} from "date-fns";
+import {isToday} from "date-fns";
 
 const prisma = new PrismaClient();
 

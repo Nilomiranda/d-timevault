@@ -14,7 +14,15 @@ interface ConfirmTimeCapsuleInput {
   guid: string
 }
 
-export const createTimeCapsule = async (input: TimeCapsuleInput) => httpClient?.post('/time-capsules/create', { ...input, confirmationCallbackUrl: 'http://localhost:4000/email/confirm', deletionCallbackUrl: 'http://localhost:4000/email/delete' })
+export const createTimeCapsule = async (input: TimeCapsuleInput) => {
+  const baseUrl = window?.location?.href
+
+  return httpClient?.post('/time-capsules/create', {
+    ...input,
+    confirmationCallbackUrl: `${baseUrl}email/confirm`,
+    deletionCallbackUrl: `${baseUrl}email/delete`,
+  })
+}
 
 export const deleteTimeCapsule = async (input: ConfirmTimeCapsuleInput) => {
   const { code, email, guid } = input

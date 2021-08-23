@@ -18,6 +18,8 @@ const Index = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
+    console.log('scheduledDate', scheduledDate)
+
     try {
       setSubmitting(true)
       await createTimeCapsule({ email, content, scheduledTo: scheduledDate })

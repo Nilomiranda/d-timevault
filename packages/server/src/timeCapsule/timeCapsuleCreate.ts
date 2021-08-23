@@ -21,6 +21,9 @@ export const createTimeCapsule = async (context: KoaContext) => {
   const { request: { body }, prisma } = context
   const { email, name, content, scheduledTo, confirmationCallbackUrl, deletionCallbackUrl } = body
 
+  console.log('scheduledTo', scheduledTo)
+  console.log('scheduledTo (instance)', new Date(scheduledTo))
+
   try {
     await validationSchema.validate({ email, name, content, scheduledTo, confirmationCallbackUrl, deletionCallbackUrl })
 

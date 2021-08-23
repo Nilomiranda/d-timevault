@@ -1,7 +1,7 @@
 import {KoaContext} from "../globalInterfaces";
 import * as yup from 'yup'
 import Chance from 'chance'
-import {isAfter, parseISO} from "date-fns";
+import {isAfter, parseISO, set} from "date-fns";
 import {sendEmailWithTemplate} from "../services/mailjet";
 
 const chance = new Chance()
@@ -24,6 +24,13 @@ export const createTimeCapsule = async (context: KoaContext) => {
   console.log('scheduledTo', scheduledTo)
   console.log('scheduledTo (instance)', new Date(scheduledTo))
 
+  const scheduledData = set(new Date(scheduledTo), {
+    hours: 12,
+    minutes: 0,
+    seconds: 0,
+    milliseconds: 0,
+  })
+
   try {
     await validationSchema.validate({ email, name, content, scheduledTo, confirmationCallbackUrl, deletionCallbackUrl })
 
@@ -40,7 +47,7 @@ export const createTimeCapsule = async (context: KoaContext) => {
         name,
         content,
         emailConfirmationCode: chance.string({ pool: 'ABCDEFGHIJKLMNOPQRSTUVXWYZ1234567890', length: 6 }),
-        scheduledTo: new Date(scheduledTo),
+        scheduledTo: scheduledData,
         uuid: chance.guid({ version: 5 })
       }
     })

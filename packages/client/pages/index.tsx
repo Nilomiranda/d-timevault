@@ -18,8 +18,6 @@ const Index = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
 
-    console.log('scheduledDate', scheduledDate)
-
     try {
       setSubmitting(true)
       await createTimeCapsule({ email, content, scheduledTo: scheduledDate })
@@ -115,7 +113,7 @@ const Index = () => {
           <Text color="white" fontSize="md" mb="1rem">
             When should we send you your time capsule?
           </Text>
-          <Calendar onChange={setScheduledDate} value={scheduledDate} activeStartDate={new Date()} minDate={addHours(new Date(), 24)} />
+          <Calendar onChange={setScheduledDate} value={scheduledDate} minDate={addHours(new Date(), 24)} />
         </Box>
 
         <Fade in={submitted}>

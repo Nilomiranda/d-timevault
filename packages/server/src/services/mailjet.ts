@@ -11,7 +11,7 @@ export const sendEmailWithTemplate = async (templateId: number, to: {Email: stri
     Messages:[
       {
         From: {
-          Email: "danmiranda.io@outlook.com",
+          Email: process.env.EMAIL_SENDER_ADDRESS,
           Name: "no-reply"
         },
         To: to,
